@@ -1,9 +1,9 @@
 clear all;
 
-sim_n = 4;
+ctrl_i = 4;
 
-[K, tau, ~] = get_values(sim_n);
-switch(sim_n)
+[K, tau, ~] = get_values(ctrl_i);
+switch(ctrl_i)
     case 1
         mag_final = 41.5;
     case 2
