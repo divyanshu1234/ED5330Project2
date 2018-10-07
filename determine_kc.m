@@ -14,10 +14,13 @@ switch(ctrl_i)
         mag_final = 38.2;     
 end
 
+% mag_final = 1;
+
 s = tf('s');
 B = 5;
 Tc = 0.2;
-Kc = 10 ^ (-mag_final/20);
+% Kc = 10 ^ (-mag_final/20);
+Kc = 1;
 
 H_s = 1;
 P_s = K*s / (1 + tau*s);
@@ -26,10 +29,10 @@ C_s = Kc * B * (Tc*s + 1) / (B*Tc*s + 1);
 G_s = C_s * P_s;
 cl_tr_fn = G_s / (1 + G_s*H_s);
 
-figure();
-bode(C_s);
-title('Bode - Controller');
+% figure();
+% bode(C_s);
+% title('Bode - Controller');
 
 figure();
 bode(G_s);
-title('Bode - Closed Loop System');
+title('Bode - System Transfer Function');

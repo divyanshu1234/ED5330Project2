@@ -17,6 +17,15 @@ end
 
 % plot(log10(2*pi*max_out_f), 20*log10(max_out ./ max_in));
 
+figure();
 semilogx(2*pi*max_in_f, 20*log10(max_out ./ max_in));
 xlabel('\omega (rad s^-^1)');
-ylabel('Gain (dB)')
+ylabel('Gain (dB)');
+
+figure();
+stem(max_in_f, max_in);
+hold on;
+stem(max_out_f, max_out);
+legend('Input', 'Output');
+xlabel('Frequency (Hz)');
+ylabel('Force (N)');
