@@ -26,6 +26,6 @@ figure();
 stem(max_in_f, max_in);
 hold on;
 stem(max_out_f, max_out);
-legend('Input', 'Output');
+legend('Input - Current', 'Output - Flow');
 xlabel('Frequency (Hz)');
-ylabel('Force (N)');
+ylabel('Magnitude');

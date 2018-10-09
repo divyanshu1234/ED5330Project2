@@ -7,7 +7,7 @@ ctrl_i = 4;
 
 s = tf('s');
 B = 5;
-Tc = 0.2;
+Tc = 0.2 / (2 * pi);
 
 H_s = 1;
 P_s = K*s / (1 + tau*s);

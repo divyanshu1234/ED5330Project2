@@ -1,6 +1,6 @@
 clear all;
 
-ctrl_i = 4;
+ctrl_i = 3;
 
 [K, tau, ~] = get_values(ctrl_i);
 switch(ctrl_i)
@@ -14,13 +14,10 @@ switch(ctrl_i)
         mag_final = 38.2;     
 end
 
-% mag_final = 1;
-
 s = tf('s');
 B = 5;
-Tc = 0.2;
-% Kc = 10 ^ (-mag_final/20);
-Kc = 1;
+Tc = 0.2 / (2 * pi);
+Kc = 10 ^ (-mag_final/20);
 
 H_s = 1;
 P_s = K*s / (1 + tau*s);
@@ -29,10 +26,10 @@ C_s = Kc * B * (Tc*s + 1) / (B*Tc*s + 1);
 G_s = C_s * P_s;
 cl_tr_fn = G_s / (1 + G_s*H_s);
 
-% figure();
-% bode(C_s);
-% title('Bode - Controller');
+figure();
+bode(P_s);
+title('Bode - Plant Transfer Function');
 
 figure();
-bode(G_s);
-title('Bode - System Transfer Function');
+bode(G_s * H_s);
+title('Bode - Open Loop Transfer Function');
